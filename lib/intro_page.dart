@@ -1,3 +1,5 @@
+import 'package:coffee_shop/components/app_drawer.dart';
+import 'package:coffee_shop/pages/menu_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:async'; // Import Timer
 import 'dart:math'; // Import for using Pi
@@ -65,15 +67,8 @@ class _IntroPageState extends State<IntroPage>
           color: Colors.white,
         ),
       ),
-      drawer: Drawer(
-        backgroundColor: Colors.white,
-        child: DrawerHeader(
-            child: Icon(
-          Icons.music_note,
-          size: 45,
-        )),
-      ),
-      backgroundColor: const Color.fromARGB(255, 18, 3, 1),
+      drawer: AppDrawer(),
+      backgroundColor: const Color.fromARGB(255, 28, 9, 6),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -115,22 +110,32 @@ class _IntroPageState extends State<IntroPage>
             SizedBox(
               height: 30,
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 14, 12, 12),
-                borderRadius: BorderRadius.only(
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MenuPage()),
+                );
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 254, 248, 248),
+                  borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(10),
-                    topRight: Radius.circular(30)),
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                child: Text(
-                  'Grab a Coffee, Check the Menu',
-                  style: TextStyle(
-                      color: Colors.amber,
+                    topRight: Radius.circular(30),
+                  ),
+                ),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  child: Text(
+                    'Grab a Coffee, Check the Menu',
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 178, 71, 4),
                       fontSize: 16,
-                      fontWeight: FontWeight.bold),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
             ),
