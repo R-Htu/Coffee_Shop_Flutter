@@ -23,7 +23,13 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           ListTile(
             leading: Icon(Icons.local_cafe),
-            title: Text('M E N U'),
+            title: Text(
+              'M E N U',
+              style: TextStyle(
+                fontWeight: FontWeight.w900,
+                color: Colors.black,
+              ),
+            ),
             onTap: () {
               Navigator.pop(context);
               Navigator.pushReplacementNamed(context, '/MenuPage');
@@ -31,7 +37,13 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           ListTile(
             leading: Icon(Icons.home),
-            title: Text('H O M E'),
+            title: Text(
+              'H O M E',
+              style: TextStyle(
+                fontWeight: FontWeight.w900,
+                color: Colors.black,
+              ),
+            ),
             onTap: () {
               Navigator.pop(context);
               Navigator.pushReplacementNamed(context, '/HomePage');
@@ -39,7 +51,13 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           ListTile(
             leading: Icon(Icons.star),
-            title: Text('R E C O M M E N D'),
+            title: Text(
+              'R E C O M M E N D',
+              style: TextStyle(
+                fontWeight: FontWeight.w900,
+                color: Colors.black,
+              ),
+            ),
             onTap: () {
               Navigator.pop(context);
               Navigator.pushReplacementNamed(context, '/RecommendPage');
@@ -47,20 +65,35 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           ListTile(
             leading: Icon(Icons.rate_review),
-            title: Text('R E V I E W'),
+            title: Text(
+              'R E V I E W',
+              style: TextStyle(
+                fontWeight: FontWeight.w900,
+                color: Colors.black,
+              ),
+            ),
             onTap: () {
               Navigator.pop(context);
               Navigator.pushReplacementNamed(context, '/ReviewPage');
             },
           ),
           Spacer(),
-          ListTile(
-            leading: Icon(Icons.logout),
-            title: Text('L O G O U T'),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, '/LogoutPage');
-            },
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: ListTile(
+              leading: Icon(Icons.logout),
+              title: Text(
+                'L O G O U T',
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  color: Colors.black,
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushReplacementNamed(context, '/LogoutPage');
+              },
+            ),
           ),
         ],
       ),
