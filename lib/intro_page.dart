@@ -1,4 +1,5 @@
 import 'package:coffee_shop/components/app_drawer.dart';
+import 'package:coffee_shop/const.dart';
 import 'package:coffee_shop/home_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -20,13 +21,6 @@ class _IntroPageState extends State<IntroPage>
     "Coffee: because adulting is hard.",
     "Espresso yourself and stay grounded.",
     "Life begins after coffee."
-  ];
-  final List<String> _images = [
-    'lib/images/latte.png',
-    'lib/images/latte-art.png',
-    'lib/images/coffee-cup.png',
-    'lib/images/coffee-plant.png',
-    'lib/images/coffee.png',
   ];
 
   final List<Color> _colors = [
@@ -94,8 +88,8 @@ class _IntroPageState extends State<IntroPage>
           color: const Color.fromARGB(255, 138, 2, 2),
         ),
       ),
-      drawer: AppDrawer(),
-      backgroundColor: const Color.fromARGB(255, 248, 239, 238),
+      endDrawer: AppDrawer(),
+      backgroundColor: backgroundColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -180,11 +174,13 @@ class _IntroPageState extends State<IntroPage>
               child: Container(
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 11, 1, 1),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10),
+                  borderRadius: BorderRadius.all(Radius.circular(8)
+
+                      /* bottomLeft: Radius.circular(10),
                       topRight: Radius.circular(30),
                       bottomRight: Radius.circular(10),
-                      topLeft: Radius.circular(30)),
+                      topLeft: Radius.circular(30)*/
+                      ),
                 ),
                 child: Padding(
                   padding:

@@ -29,8 +29,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      drawer: AppDrawer(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+      ),
+      endDrawer: AppDrawer(),
       body: _pages[_bottomIndex],
       bottomNavigationBar: BottomNavBar(
         onTapBottom: (index) => bottomBarNavigator(index),

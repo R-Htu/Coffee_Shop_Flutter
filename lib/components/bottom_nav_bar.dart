@@ -4,7 +4,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 class BottomNavBar extends StatelessWidget {
   final void Function(int)? onTapBottom; // Callback for tab changes
 
-  BottomNavBar({super.key, required this.onTapBottom});
+  const BottomNavBar({super.key, required this.onTapBottom});
 
   @override
   Widget build(BuildContext context) {
