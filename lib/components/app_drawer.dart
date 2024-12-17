@@ -1,3 +1,4 @@
+import 'package:coffee_shop/const.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatefulWidget {
@@ -11,7 +12,7 @@ class _AppDrawerState extends State<AppDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey,
       child: Column(
         children: [
           DrawerHeader(

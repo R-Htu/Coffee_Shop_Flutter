@@ -1,5 +1,6 @@
 import 'package:coffee_shop/components/app_drawer.dart';
 import 'package:coffee_shop/components/bottom_nav_bar.dart';
+import 'package:coffee_shop/const.dart';
 import 'package:coffee_shop/pages/cart_page.dart';
 import 'package:coffee_shop/pages/menu_page.dart';
 import 'package:coffee_shop/pages/save_page.dart';
@@ -29,8 +30,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
       ),
       endDrawer: AppDrawer(),
       body: _pages[_bottomIndex],

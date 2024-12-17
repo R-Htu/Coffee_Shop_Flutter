@@ -88,7 +88,7 @@ class _IntroPageState extends State<IntroPage>
           color: const Color.fromARGB(255, 138, 2, 2),
         ),
       ),
-      endDrawer: AppDrawer(),
+      drawer: AppDrawer(),
       backgroundColor: backgroundColor,
       body: Center(
         child: Column(
