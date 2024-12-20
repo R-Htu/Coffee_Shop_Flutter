@@ -1,52 +1,56 @@
 import 'package:flutter/material.dart';
 import 'coffee.dart';
 
-/* // List of coffee maps (Yay ..:D no longer need the Coffee class )
-  final List<Map<String, String>> _shop = [
-    {'name': 'Long Black', 'price': '4.10', 'imagePath': 'lib/images/latte.png'},
-    {'name': 'Latte', 'price': '4.20', 'imagePath': 'lib/images/latte-art.png'},
-    {'name': 'Espresso', 'price': '4.10', 'imagePath': 'lib/images/coffee-art.png'},
-    {'name': 'Iced Coffee', 'price': '4.10', 'imagePath': 'lib/images/coffee.png'},
-  ];
-
-  final List<Map<String, String>> _userCart = [];
-
- 
-  List<Map<String, String>> get coffeeShop => _shop;
-
- 
-  List<Map<String, String>> get userCart => _userCart; */
 class CoffeeShop extends ChangeNotifier {
-  // coffee for sale list
+  // List of coffees available for sale
   final List<Coffee> _shop = [
     Coffee(
-        name: 'Long Black', price: '4.10', imagePath: 'lib/images/latte.png'),
-    Coffee(name: 'Latte', price: '4.20', imagePath: 'lib/images/latte-art.png'),
+        name: 'Long Black',
+        price: '4.10',
+        imagePath: 'lib/images/latte.png',
+        basePrice: 4.10),
+    Coffee(
+        name: 'Latte',
+        price: '4.20',
+        imagePath: 'lib/images/latte-art.png',
+        basePrice: 4.20),
     Coffee(
         name: 'Espresso',
         price: '4.10',
-        imagePath: 'lib/images/coffee-cup.png'),
+        imagePath: 'lib/images/coffee-cup.png',
+        basePrice: 4.10),
     Coffee(
-        name: 'Iced Coffee', price: '4.10', imagePath: 'lib/images/coffee.png'),
+        name: 'Black Coffee',
+        price: '4.10',
+        imagePath: 'lib/images/coffee.png',
+        basePrice: 4.10),
   ];
-  // user cart
+
+  // List of user-selected coffees in the cart
   final List<Coffee> _userCart = [];
 
-  //get coffee list
+  // Get coffee list for sale
   List<Coffee> get coffeeShop => _shop;
 
-  //get user cart
+  // Get user cart items
   List<Coffee> get userCart => _userCart;
 
-  //add item to cart
+  // Add coffee item to cart
   void addItemToCart(Coffee coffee) {
     _userCart.add(coffee);
     notifyListeners();
   }
 
-  //remove items from cart
+  // Remove coffee item from cart
   void removeItemFromCart(Coffee coffee) {
     _userCart.remove(coffee);
     notifyListeners();
+  }
+
+  // Update coffee size in the cart
+  void updateCoffeeSizeInCart(Coffee coffee, String size) {
+    // Update the size and price for the coffee item in the cart
+    coffee.updatePrice(size);
+    notifyListeners(); // Notify the UI to rebuild with updated prices
   }
 }

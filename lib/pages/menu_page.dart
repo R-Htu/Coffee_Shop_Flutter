@@ -12,9 +12,33 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
-  // add coffee to cart
   void addToCart(Coffee coffee) {
     Provider.of<CoffeeShop>(context, listen: false).addItemToCart(coffee);
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        Future.delayed(Duration(seconds: 1), () {
+          if (Navigator.canPop(context)) {
+            Navigator.pop(context); // Close the dialog
+          }
+        });
+
+        return AlertDialog(
+          backgroundColor: const Color.fromARGB(255, 58, 54, 54),
+          title: Text(
+            'Action Completed!',
+            style: TextStyle(color: Colors.white),
+          ),
+          content: Text(
+            'The item has been successfully added to your cart.',
+            style: TextStyle(
+              color: Colors.white24,
+            ),
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -24,13 +48,14 @@ class _MenuPageState extends State<MenuPage> {
         child: Padding(
           padding: const EdgeInsets.all(25.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'How would you like your coffee?',
                 style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    color: const Color.fromARGB(255, 42, 40, 40)),
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.brown[800]),
               ),
               SizedBox(
                 height: 25,
@@ -41,6 +66,8 @@ class _MenuPageState extends State<MenuPage> {
                   itemBuilder: (context, index) {
                     Coffee eachCoffee = value.coffeeShop[index];
                     return CoffeeTile(
+                      icon: Icon(Icons.add_shopping_cart,
+                          color: const Color.fromARGB(255, 220, 199, 191)),
                       coffee: eachCoffee,
                       onPressed: () => addToCart(eachCoffee),
                     );
