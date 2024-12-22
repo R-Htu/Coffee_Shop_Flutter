@@ -1,0 +1,48 @@
+{
+  "flutter": {
+    "platforms": {
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "coffeeshopapp-d8de6",
+          "configurations": {
+            "ios": "1:335864851774:ios:3814af318c68857485d06f",
+            "macos": "1:335864851774:ios:3814af318c68857485d06f",
+            "web": "1:335864851774:web:ab4b94cefc5e4a8785d06f",
+            "windows": "1:335864851774:web:ff8583bd8b9ed2dc85d06f"
+          }
+        }
+      },
+      "android": {
+        "default": {
+          "projectId": "coffeshop-a8f80",
+          "appId": "1:795117660140:android:8f85a98af6687ccf8c02c9",
+          "fileOutput": "android/app/google-services.json"
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ]
+    }
+  ],
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  },
+  "storage": {
+    "rules": "storage.rules"
+  }
+}

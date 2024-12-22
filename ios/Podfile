@@ -1,0 +1,14 @@
+platform :ios, '13.0'
+
+# CocoaPods analytics sends network stats asynchronously, so you can disable it
+# by uncommenting the line below.
+# install! 'cocoapods', :disable_input_output_paths
+
+target 'Runner' do
+  # Flutter's default pod setup
+  use_frameworks!
+  use_modular_headers!
+
+  # Pods for Runner
+  pod 'Flutter', :path => '../.flutter-plugins'
+end

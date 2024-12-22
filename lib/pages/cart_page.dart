@@ -1,6 +1,6 @@
-import 'package:coffee_shop/components/cart_item_tile.dart';
-import 'package:coffee_shop/model/coffee.dart';
-import 'package:coffee_shop/model/coffee_shop.dart';
+import 'package:coffeeshop/components/cart_item_tile.dart';
+import 'package:coffeeshop/model/coffee.dart';
+import 'package:coffeeshop/model/coffee_shop.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -67,6 +67,21 @@ class _CartPageState extends State<CartPage> {
                   },
                 ),
               ),
+              Container(
+                padding: EdgeInsets.all(17),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 97, 83, 83),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Center(
+                  child: Text(
+                    'Add To Cart',
+                    style: TextStyle(
+                        color: const Color.fromARGB(255, 4, 4, 4),
+                        fontSize: 18),
+                  ),
+                ),
+              )
             ],
           ),
         ),

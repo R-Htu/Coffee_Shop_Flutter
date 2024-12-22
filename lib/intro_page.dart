@@ -1,6 +1,6 @@
-import 'package:coffee_shop/components/app_drawer.dart';
-import 'package:coffee_shop/const.dart';
-import 'package:coffee_shop/home_page.dart';
+import 'package:coffeeshop/components/app_drawer.dart';
+import 'package:coffeeshop/const.dart';
+import 'package:coffeeshop/home_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:math';

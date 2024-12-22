@@ -1,4 +1,4 @@
-import 'package:coffee_shop/model/coffee.dart';
+import 'package:coffeeshop/model/coffee.dart';
 import 'package:flutter/material.dart';
 
 class CartItemTile extends StatefulWidget {
@@ -87,7 +87,7 @@ class _CartItemTileState extends State<CartItemTile> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color.fromARGB(255, 87, 81, 81),
+      color: const Color.fromARGB(255, 97, 83, 83),
       elevation: 5, // Add shadow for a more card-like look
       margin: EdgeInsets.only(bottom: 20),
       shape: RoundedRectangleBorder(

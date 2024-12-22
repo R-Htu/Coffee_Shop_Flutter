@@ -15,14 +15,15 @@ class BottomNavBar extends StatelessWidget {
           255, 108, 134, 152), // Tab background color when active
       tabBackgroundGradient: LinearGradient(
         colors: [
-          const Color.fromARGB(255, 238, 238, 238),
-          const Color.fromARGB(255, 98, 96, 96)
+          const Color.fromARGB(255, 147, 197, 142),
+          const Color.fromARGB(255, 168, 56, 56)
         ], // Adding a gradient for the active tab
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
       ),
       tabBorderRadius: 10,
-      rippleColor: Colors.grey, // Add a ripple effect when tapping on tabs
+      rippleColor: const Color.fromARGB(
+          255, 98, 37, 37), // Add a ripple effect when tapping on tabs
       hoverColor: Colors.blue, // Color when hovering (for web)
       gap: 8, // Space between the icons and text
       onTabChange: onTapBottom,
@@ -32,11 +33,11 @@ class BottomNavBar extends StatelessWidget {
           text: 'Shop',
         ),
         GButton(
-          icon: Icons.rate_review,
+          icon: Icons.shopping_cart,
           text: 'Rate',
         ),
         GButton(
-          icon: Icons.shopping_cart,
+          icon: Icons.rate_review,
           text: 'Cart',
         ),
       ],
