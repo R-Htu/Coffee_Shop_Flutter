@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "coffee-shop-eec08"
-  }
+    "default": "coffee-shop-eec08",
+    "production": "coffeeshop-e6f92"
+  },
+  "targets": {},
+  "etags": {}
 }

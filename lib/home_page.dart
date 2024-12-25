@@ -3,7 +3,7 @@ import 'package:coffeeshop/components/bottom_nav_bar.dart';
 import 'package:coffeeshop/const.dart';
 import 'package:coffeeshop/pages/cart_page.dart';
 import 'package:coffeeshop/pages/menu_page.dart';
-import 'package:coffeeshop/pages/save_page.dart';
+import 'package:coffeeshop/pages/payment_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     const MenuPage(),
     const CartPage(),
-    const SavePage(),
+    const PaymentPage(),
   ];
 
   void bottomBarNavigator(int index) {

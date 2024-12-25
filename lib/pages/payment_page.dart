@@ -1,14 +1,19 @@
-import 'package:coffeeshop/model/payment_tile.dart';
+import 'dart:convert'; // Import for json encoding/decoding
+import 'dart:js_interop';
+import 'package:coffeeshop/payment.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:http/http.dart' as http; // Import for HTTP requests
+import 'package:coffeeshop/model/payment_tile.dart';
 
-class SavePage extends StatefulWidget {
-  const SavePage({super.key});
+class PaymentPage extends StatefulWidget {
+  const PaymentPage({super.key});
 
   @override
-  State<SavePage> createState() => _SavePageState();
+  State<PaymentPage> createState() => _PaymentPageState();
 }
 
-class _SavePageState extends State<SavePage> {
+class _PaymentPageState extends State<PaymentPage> {
   TextEditingController amountController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
@@ -34,15 +39,54 @@ class _SavePageState extends State<SavePage> {
     'AED'
   ];
   String selectedCurrency = 'USD';
+  Future<void> initPaymentSheet() async {
+    try {
+      // 1. create payment intent on the client side by calling stripe api
+      final data = await createPaymentIntent(
+          name: nameController.text,
+          address: addressController.text,
+          pin: pincodeController.text,
+          city: cityController.text,
+          state: stateController.text,
+          country: countryController.text,
+          currency: selectedCurrency,
+          amount: amountController.text);
+
+      // 2. initialize the payment sheet
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          // Set to true for custom flow
+          customFlow: false,
+          // Main params
+          merchantDisplayName: 'Testing',
+          paymentIntentClientSecret: data['client_secret'],
+          // Customer keys
+          customerEphemeralKeySecret: data['ephemeralKey'],
+          customerId: data['id'],
+          // Extra options
+          /*applePay: const PaymentSheetApplePay(
+            merchantCountryCode: 'US',
+          ),
+          googlePay: const PaymentSheetGooglePay(
+            merchantCountryCode: 'US',
+            testEnv: true,
+          ),*/
+          style: ThemeMode.dark,
+        ),
+      );
+      //setState(() {});
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: $e')),
+      );
+      rethrow;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Payment Details"),
-        backgroundColor: Colors.blueAccent.shade400,
-      ),
-      body: Padding(
+    return SingleChildScrollView(
+      child: Padding(
         padding: const EdgeInsets.all(16.0), // Padding around the body
         child: SingleChildScrollView(
           // Enables scrolling for smaller screens
@@ -203,7 +247,59 @@ class _SavePageState extends State<SavePage> {
                         color: Color.fromARGB(255, 191, 6, 6), fontSize: 16),
                   ),
                   onPressed: () async {
-                    // Add your onPressed action here
+                    if (formkey.currentState!.validate() &&
+                        formkey1.currentState!.validate() &&
+                        formkey2.currentState!.validate() &&
+                        formkey3.currentState!.validate() &&
+                        formkey4.currentState!.validate() &&
+                        formkey5.currentState!.validate() &&
+                        formkey6.currentState!.validate()) {}
+                    /*  if (formkey.currentState?.validate() ?? false) {
+                      String email = nameController.text.trim(); // Get the email
+                      String amount =
+                          amountController.text.trim(); // Get the amount entered
+      
+                      // Send HTTP request to the Firebase Emulator URL
+                      try {
+                        final response = await http.post(
+                          Uri.parse(
+                              'http://127.0.0.1:5001/coffeeshop-e6f92/us-central1/stripePaymentIntentRequest'), // Local emulator URL
+                          headers: {
+                            'Content-Type': 'application/json',
+                          },
+                          body: json.encode({
+                            'email': email,
+                            'amount': amount,
+                          }),
+                        );
+      
+                        if (response.statusCode == 200) {
+                          final data = json.decode(response.body);
+      
+                          if (data['success']) {
+                            // Proceed with the next step (e.g., handle the payment intent)
+                            String clientSecret = data['paymentIntent'];
+                            String ephemeralKey = data['ephemeralKey'];
+                            String customerId = data['customer'];
+      
+                            // Now, you can pass these values to the Stripe SDK or any payment gateway SDK for further steps
+                            print('Client Secret: $clientSecret');
+                            print('Ephemeral Key: $ephemeralKey');
+                            print('Customer ID: $customerId');
+      
+                            // Redirect to payment page or handle payment process
+                          } else {
+                            print('Error: ${data['error']}');
+                          }
+                        } else {
+                          print(
+                              'Request failed with status: ${response.statusCode}');
+                        }
+                      } catch (e) {
+                        print('Error: $e');
+                      }
+                    }
+                */
                   },
                 ),
               ),

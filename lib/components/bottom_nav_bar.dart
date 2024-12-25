@@ -34,11 +34,11 @@ class BottomNavBar extends StatelessWidget {
         ),
         GButton(
           icon: Icons.shopping_cart,
-          text: 'Rate',
+          text: 'Cart',
         ),
         GButton(
-          icon: Icons.rate_review,
-          text: 'Cart',
+          icon: Icons.money,
+          text: 'Bill',
         ),
       ],
     );
